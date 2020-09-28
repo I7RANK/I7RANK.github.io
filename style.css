@@ -98,13 +98,14 @@ a {
 
 #div_meinfo p {
     z-index: 2;
-    /* background: #ff7f502e;*/
+    /*background: #ff7f502e;*/
     height: 300px;
     width: 400px;
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
     position: absolute;
+    bottom: 0px;
     margin: 0;
     border-radius: 200px;
     display: flex;
