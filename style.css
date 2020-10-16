@@ -10,6 +10,23 @@ a {
     color: #fff;
 }
 
+a:hover {
+    text-shadow: 0 0 3px #fff;
+}
+
+a:active {
+    color: #c6c6c6;
+    text-shadow: 0 0 3px #878787;
+}
+
+#h2_dev {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: #fff;
+    user-select: none;
+}
+
 #head_index {
     height: 700px;
     display: flex;
@@ -26,7 +43,7 @@ a {
     justify-content: space-between;
     padding-left: 30px;
     padding-right: 30px;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #424242;
 }
 
 #div_menu a {
@@ -86,7 +103,7 @@ a {
     align-items:  center;
     margin: 0;
     border-radius: 200px 50px;
-    border: solid 1px #fff;
+    border-bottom: solid 4px #fff;
     padding-left: 70px;
 }
 
