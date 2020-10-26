@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transposición de Notas Musicales</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/fonts.css">
+    <link rel="icon" type="image/x-icon" href="src/piano.ico">
+</head>
+
+<body onload="cargar_teclas()">
+    <div id="div_piano" class="centrar">
+        <!-- Desde A-2 hasta C7 -->
+        <div id="div_tn0" class="teclas_negras" onclick="click_nota(this);"><label id="lbl_nom_tn0">A#0</label></div>
+        <div id="div_octava1" class="div_octava">
+            <div id="div_tn1" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn1">C#1</label></div>
+            <div id="div_tn2" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn2">D#1</label></div>
+            <div id="div_tn3" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn3">F#1</label></div>
+            <div id="div_tn4" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn4">G#1</label></div>
+            <div id="div_tn5" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn5">A#1</label></div>
+        </div>
+
+        <div id="div_octava2" class="div_octava">
+            <div id="div_tn6" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn6">C#2</label></div>
+            <div id="div_tn7" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn7">D#2</label></div>
+            <div id="div_tn8" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn8">F#2</label></div>
+            <div id="div_tn9" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn9">G#2</label></div>
+            <div id="div_tn10" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn10">A#2</label></div>
+        </div>
+
+        <div id="div_octava3" class="div_octava">
+            <div id="div_tn11" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn11">C#3</label></div>
+            <div id="div_tn12" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn12">D#3</label></div>
+            <div id="div_tn13" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn13">F#3</label></div>
+            <div id="div_tn14" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn14">G#3</label></div>
+            <div id="div_tn15" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn15">A#3</label></div>
+        </div>
+
+        <div id="div_octava4" class="div_octava">
+            <div id="div_tn16" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn16">C#4</label></div>
+            <div id="div_tn17" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn17">D#4</label></div>
+            <div id="div_tn18" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn18">F#4</label></div>
+            <div id="div_tn19" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn19">G#4</label></div>
+            <div id="div_tn20" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn20">A#4</label></div>
+        </div>
+
+        <div id="div_octava5" class="div_octava">
+            <div id="div_tn21" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn21">C#5</label></div>
+            <div id="div_tn22" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn22">D#5</label></div>
+            <div id="div_tn23" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn23">F#5</label></div>
+            <div id="div_tn24" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn24">G#5</label></div>
+            <div id="div_tn25" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn25">A#5</label></div>
+        </div>
+
+        <div id="div_octava6" class="div_octava">
+            <div id="div_tn26" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn26">C#6</label></div>
+            <div id="div_tn27" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn27">D#6</label></div>
+            <div id="div_tn28" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn28">F#6</label></div>
+            <div id="div_tn29" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn29">G#6</label></div>
+            <div id="div_tn30" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn30">A#6</label></div>
+        </div>
+
+        <div id="div_octava7" class="div_octava">
+            <div id="div_tn31" class="teclas_negras div_tn1" onclick="click_nota(this);"><label id="lbl_nom_tn31">C#7</label></div>
+            <div id="div_tn32" class="teclas_negras div_tn2" onclick="click_nota(this);"><label id="lbl_nom_tn32">D#7</label></div>
+            <div id="div_tn33" class="teclas_negras div_tn3" onclick="click_nota(this);"><label id="lbl_nom_tn33">F#7</label></div>
+            <div id="div_tn34" class="teclas_negras div_tn4" onclick="click_nota(this);"><label id="lbl_nom_tn34">G#7</label></div>
+            <div id="div_tn35" class="teclas_negras div_tn5" onclick="click_nota(this);"><label id="lbl_nom_tn35">A#7</label></div>
+        </div>
+
+    </div>
+
+    <div id="div_mostrar_t">
+        <label id="lbl_mostrar_entr"></label><br><br>
+        <h4>Notas transpuestas</h4>
+        <label id="lbl_mostrar_trans"></label>
+    </div>
+
+    <div id="div_semitonos" class="centrar">
+        <h4>Semitonos</h4>
+
+        <div id="div_select">
+            <span id="btn_menos" class="icon-menos anim_btn" onclick="btn_majomenos(this);"></span>
+            <input type="text" maxlength="4" id="txt_num_semitonos" value="0">
+            <span id="btn_mas" class="icon-mas anim_btn" onclick="btn_majomenos(this);"></span>
+        </div><br>
+
+        <button id="btn_transponer" class="anim_btn" onclick="transponer();">Transponer</button>
+    </div>
+
+    <!-- <div>
+        <button onclick="borrar();">Borrar</button>
+    </div> -->
+    <script src="code.js"></script>
+</body>
+
+</html>
