@@ -3,6 +3,7 @@ body {
     padding: 0;
     margin: 0;
     font-family: calibri;
+    color: #fff;
 }
 
 a {
@@ -142,12 +143,14 @@ a:active {
 }
 
 #me_img {
+    background: #252525;
     z-index: 2;
     height: 500px;
     width: 500px;
     border-radius: 2000px;
     border-bottom: dashed 5px #fff;
     border-right: double 10px #fff;
+    box-shadow: 2px 2px 15px #000000;
 }
 
 
@@ -171,4 +174,98 @@ a:active {
 #div_contend_social img {
     height: 70px;
     margin-right: 10px;
+}
+
+/* ====== MAIN ====== */
+main {
+    /* background: #424242; */
+    height: 1500px;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#div_projects {
+    /* background: #222222; */
+    height: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content_proj {
+    background: #303030;
+    height: 400px;
+    width: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 200px 200px 100px 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-top: solid  #545454;
+    box-shadow: 10px 10px 10px #1b1b1b;
+}
+
+.content_proj img {
+    height: 350px;
+    width: 350px;
+    border-radius: 200px;
+    box-shadow: 0 0 10px #1b1b1b;
+}
+
+.content_proj:nth-child(2n) {
+    flex-direction: row-reverse;
+    border-radius: 200px 200px 200px 100px;
+}
+
+.content_text {
+    background: #252525;
+    height: 300px;
+    width: 500px;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 10px #101010;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.content_text h2 {
+    font-size: 24pt;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.content_text p {
+    height: 250px;
+    width: 90%;
+    font-size: 16pt;
+    text-align: center;
+}
+
+.a_goto {
+    position: absolute;
+    bottom: -35px;
+    font-size: 14pt;
+    color: #00b1ff;
+}
+
+.a_goto:hover {
+    text-shadow: 0 0 3px #00b1ff;
+}
+
+.a_goto:active {
+    color: #008fce;
+    text-shadow: 0 0 3px #008fce;
+}
+
+#h2_main_tittle {
+    font-size: 30pt;
 }
