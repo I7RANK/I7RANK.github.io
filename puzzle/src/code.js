@@ -1,25 +1,6 @@
 var num_piezas;
 
 /* LEVELS */
-var levels = {
-	"lvl_1":[
-		[ "", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv", "", "", "rec", "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""],
-		[0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0]
-	],
-	"lvl_2":[
-		["", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv-x2", "", "", "rec", "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""],
-		[0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0]
-	],
-	"lvl_3":[
-		["curv", "rec", "rec", "curv", "", "rec", "curv", "rec", "curv", "", "rec", "curv", "rec", "curv", "fin", "curv", "rec", "rec", "curv-x2", "curv", "", "", "", "ini", ""],
-		[4, 2, 2, 1, 0, 1, 4, 2, 2, 0, 1, 3, 2, 1, 1, 3, 2, 2, 1, 2, 0, 0, 0, 3, 0]
-	],
-	"lvl_20":[
-		["", "curv", "rec", "rec", "ini", "", "rec", "curv", "rec", "curv", "curv", "curv-x2", "curv", "fin", "rec", "curv", "curv", "curv", "cruz", "curv", "", "", "curv", "curv", ""],
-		[0, 4, 2, 2, 2, 0, 1, 4, 2, 1, 4, 2, 2, 1, 1, 3, 2, 4, 1, 2, 0, 0, 3, 2, 0]
-	]
-}
-
 var piezas_nivel = levels["lvl_20"][0]
 var estados_win = levels["lvl_20"][1]
 
