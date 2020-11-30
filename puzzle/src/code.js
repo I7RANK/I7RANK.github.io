@@ -1,22 +1,27 @@
 var num_piezas;
 
-// --------- algunos niveles -----------
-var piezas_nivel = ["", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv", "", "", "rec",
-    "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""
-];
-var estados_win = [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0];
+/* LEVELS */
+var levels = {
+	"lvl_1":[
+		[ "", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv", "", "", "rec", "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""],
+		[0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0]
+	],
+	"lvl_2":[
+		["", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv-x2", "", "", "rec", "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""],
+		[0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0]
+	],
+	"lvl_3":[
+		["curv", "rec", "rec", "curv", "", "rec", "curv", "rec", "curv", "", "rec", "curv", "rec", "curv", "fin", "curv", "rec", "rec", "curv-x2", "curv", "", "", "", "ini", ""],
+		[4, 2, 2, 1, 0, 1, 4, 2, 2, 0, 1, 3, 2, 1, 1, 3, 2, 2, 1, 2, 0, 0, 0, 3, 0]
+	],
+	"lvl_20":[
+		["", "curv", "rec", "rec", "ini", "", "rec", "curv", "rec", "curv", "curv", "curv-x2", "curv", "fin", "rec", "curv", "curv", "curv", "cruz", "curv", "", "", "curv", "curv", ""],
+		[0, 4, 2, 2, 2, 0, 1, 4, 2, 1, 4, 2, 2, 1, 1, 3, 2, 4, 1, 2, 0, 0, 3, 2, 0]
+	]
+}
 
-// var piezas_nivel = ["", "", "", "", "fin", "", "", "", "", "rec", "curv", "curv-x2", "", "", "rec",
-//     "rec", "curv", "rec", "rec", "curv", "ini", "", "", "", ""
-// ];
-// var estados_win = [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1, 1, 3, 2, 2, 2, 3, 0, 0, 0, 0];
-
-// var piezas_nivel = ["curv", "rec", "rec", "curv", , "rec", "curv", "rec", "curv", , "rec", "curv", "rec",
-//     "curv", "fin", "curv", "rec", "rec", "curv-x2", "curv", , , , "ini",
-// ];
-// var estados_win = [4, 2, 2, 1, 0, 1, 4, 2, 2, 0, 1, 3, 2, 1, 1, 3, 2, 2, 1, 2, 0, 0, 0, 3, 0];
-
-/* ----------------------------------------------------------- */
+var piezas_nivel = levels["lvl_20"][0]
+var estados_win = levels["lvl_20"][1]
 
 var estado_piezas = [0];
 var grados_piezas = [0];
@@ -156,28 +161,6 @@ function rotar(id) {
     var nom_img = "";
 
     nom_img = saca_nom(source);
-    /* cambia algunos estados(las que no necesitan todos los estados)
-    y reinicia estados
-    el cruzado tiene un estado de 0 */
-
-    /* estados: 
-    cruz_a, cruz_b = 1
-    cruz_ab, cruz_ba, curv_x2_a, curv_x2_b, rec_a, rec_b = 2
-    fin_a, ini_a, curv_a, curv_b = 4
-    */
-
-    /* estandarizar nombres de estados
-    ---- 1 ----
-    cruz
-    ---- 2 ----
-    curv-x2
-    ccruz para las cruzes con dos colores
-    rec
-    ---- 4 ----
-    fin
-    ini
-    curv
-    */
 
     // el estado se asigna cuando se crean las piezas
     if (nom_img == "cruz") {
@@ -516,22 +499,3 @@ function c_lineout(tipo) {
         document.getElementById("btn_p").style.color = "#1742ff";
     }
 }
-
-// Get a reference to the database service
-var database = firebase.database();
-
-// var dataDB = firebase.database().ref('Datos').push();
-
-/* var userId = "frg"
-var us = "Frank";
-var name = "2";
-
-firebase.database().ref('users/' + userId).set({
-    user: us,
-    name_level: name,
-}); */
-
-var ref = firebase.database().ref("puzzle-frank");
-ref.orderByKey().on("child_added", function(snapshot) {
-    console.log(snapshot.key);
-});
