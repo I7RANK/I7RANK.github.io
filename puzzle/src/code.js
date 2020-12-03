@@ -333,7 +333,7 @@ function cambio(equelan) {
                 div2.setAttribute("onclick", "");
             }
             spann_t.setAttribute("class", "sombra icon-ex ocultar");
-            spann_f.setAttribute("class", "sombra icon-chulo");
+            spann_f.setAttribute("class", "sombra icon-chulo icons_editor");
         } else {
             console.log(equelan);
             titulo.innerText = "";
@@ -349,7 +349,7 @@ function cambio(equelan) {
                 }
             }
             spann_f.setAttribute("class", "sombra icon-chulo ocultar");
-            spann_t.setAttribute("class", "sombra icon-ex");
+            spann_t.setAttribute("class", "sombra icon-ex icons_editor");
         }
     } else {
         tituloo.innerText = "Desseleccione la casilla primero";
