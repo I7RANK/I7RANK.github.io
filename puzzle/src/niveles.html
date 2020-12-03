@@ -15,6 +15,31 @@
 <body onload="cargar_dlvls();">
     <h1 id="tit_lvls" class="centrar sombra tit_pag">Levels</h1>
     <div id="menu_lvls" class="centrar" onclick=""></div>
+    <div id="div_win" class="centrar">
+        <div id="div_win_tittle">
+            <h2 class="sombra">Complete</h2>
+            <h3>your time: 1:23</h3>
+        </div>
+        <div id="div_stars">
+            <div class="div_icon_stars">
+                <span id="star_1" class="icons_stars icon-star-full" ></span>
+                <label class="star_time">1:00</label>
+            </div>
+            <div id="div_icon_star2" class="div_icon_stars">
+                <span id="star_2" class="icons_stars icon-star-full" ></span>
+                <label class="star_time">45</label>
+            </div>
+            <div class="div_icon_stars">
+                <span id="star_3" class="icons_stars icon-star-full" ></span>
+                <label class="star_time">1:30</label>
+            </div>
+        </div>
+        <div id="div_icons">
+            <span class="icons_editor sombra icon-home" onclick="location.href='../index.html'"></span>
+            <span class="icons_editor sombra icon-reload" onclick="try_again();"></span>
+            <span class="icons_editor sombra icon-list" onclick="location.href='niveles.html'"></span>
+        </div>
+    </div>
 
     <script src="code.js"></script>
 </body>

@@ -182,6 +182,10 @@ function rotar(id) {
                 elimg.setAttribute("src", new_url);
             }
         }
+
+        // show div_win
+        var div_win = document.getElementById("div_win");
+        div_win.style = "display: flex; animation: show 2s;"
     }
 }
 
@@ -478,6 +482,10 @@ function c_lineout(tipo) {
     }
 }
 
+/**
+ * load_lvl - loads the level selected in niveles.html
+ * @param {*} lvl is the element selected (level)
+ */
 function load_lvl(lvl) {
     var name_lvl = lvl.id.substr(4);
     var num_lvl = parseInt(name_lvl.substr(4));
@@ -489,12 +497,33 @@ function load_lvl(lvl) {
 
     document.getElementById("tit_lvls").textContent = "Level " + num_lvl;
 
+    create_div_juego();
+
+    var div_lvls = document.getElementById("menu_lvls");
+    div_lvls.parentNode.removeChild(div_lvls);
+}
+
+/**
+ * deletes the game board and creates it again
+ */
+function try_again() {
+    var div_juego= document.getElementById("div_juego");
+
+    div_juego.parentNode.removeChild(div_juego);
+
+    var div_win = document.getElementById("div_win");
+    div_win.style = "display: none; animation: none;"
+
+    create_div_juego();
+}
+
+/**
+ * creates the div where will the pieces and adds the pieces
+ */
+function create_div_juego() {
     var create_div_juego = document.createElement("div");
     create_div_juego.setAttribute("id", "div_juego");
     create_div_juego.setAttribute("class", "tablero");
     document.getElementsByTagName("body")[0].appendChild(create_div_juego);
     add_piezas(25, false);
-
-    var div_lvls = document.getElementById("menu_lvls");
-    div_lvls.parentNode.removeChild(div_lvls);
 }
