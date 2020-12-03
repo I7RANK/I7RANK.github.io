@@ -172,7 +172,6 @@ function rotar(id) {
         }
     }
     if (ganas == np) {
-        document.getElementById("div_tit_juego").style = "top: 10px;";
         for (e = 0; e <= 24; e++) {
             var elimg = document.getElementById(e);
             if (elimg == null) {} else {
@@ -216,6 +215,8 @@ function generar() {
     esta = esta.substring(2);
     console.log(line);
     console.log(esta);
+    console.log(gene_limg);
+    console.log(gene_estados);
 }
 
 /**
@@ -391,9 +392,10 @@ function cargar_dlvls() {
         var lbl_lvls = document.createElement("label");
 
         lbl_lvls.setAttribute("class", "lbl_lvls centrar");
-        div_lvls.setAttribute("id", "div_lvls" + i);
+        div_lvls.setAttribute("id", "div_lvl_" + i);
         div_lvls.setAttribute("class", "div_lvls");
-        div_lvls.setAttribute("onclick", "location.href='juego.html'");
+        /* div_lvls.setAttribute("onclick", "location.href='juego.html'"); */
+        div_lvls.setAttribute("onclick", "load_lvl(this);");
         div_lvls.setAttribute("onmouseover", "divs_hover(this);");
         div_lvls.setAttribute("onmouseout", "divs_out(this);");
 
@@ -464,7 +466,7 @@ function c_line(tipo) {
 /**
  * c_lineout - llama a c_color y cambia el color del texto cuando
  * el mouse se quita de encima (out)
- * @param {*} tipo 
+ * @param {*} tipo
  */
 function c_lineout(tipo) {
     if (tipo.id == "btn_j") {
@@ -474,4 +476,20 @@ function c_lineout(tipo) {
         c_color(2, 2);
         document.getElementById("btn_p").style.color = "#1742ff";
     }
+}
+
+function load_lvl(lvl) {
+    var name_lvl = lvl.id.substr(4);
+
+    piezas_nivel = levels[name_lvl][0]
+    estados_win = levels[name_lvl][1]
+
+    var create_div_juego = document.createElement("div");
+    create_div_juego.setAttribute("id", "div_juego");
+    create_div_juego.setAttribute("class", "tablero");
+    document.getElementsByTagName("body")[0].appendChild(create_div_juego);
+    add_piezas(25, false);
+
+    var div_lvls = document.getElementById("menu_lvls");
+    div_lvls.parentNode.removeChild(div_lvls);
 }
