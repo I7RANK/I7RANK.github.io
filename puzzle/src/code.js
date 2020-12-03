@@ -296,16 +296,15 @@ function chosen(id) {
 
 /**
  * borrar - elimina la pieza en caso de que se active la funcion borrar
- * @param {Element} id es el elemento que se quiere borrar
+ * @param {Element} element es el elemento que se quiere borrar
  * @param {boolean} solob si es false se limpian los arrays
- * ver funcion generar
+ * se utiliza en el editor para borrar las piezas
  */
-function borrar(id, solob) {
-    var node = document.getElementById(id.id);
-    node.parentNode.removeChild(node);
+function borrar(element, solob) {
+    element.parentNode.removeChild(element);
     if (solob == false) {
-        gene_limg[id.id] = "";
-        gene_estados[id.id] = 0;
+        gene_limg[element.id] = "";
+        gene_estados[element.id] = 0;
     }
 }
 
@@ -315,11 +314,9 @@ var spann_f = document.getElementById("borrar_f");
 
 /**
  * cambio - esta funcion cambia el estado de borrar piezas y agragar
- * @param {*} equelan 
- * @param {*} id 
+ * @param {*} equelan indica si esta o no eliminando true == delete
  */
-function cambio(equelan, id) {
-
+function cambio(equelan) {
     if (div_contend == "" || div_contendimg == "" || new_idimg == "") {
         if (equelan == true) {
             console.log(equelan);
@@ -353,11 +350,9 @@ function cambio(equelan, id) {
             spann_f.setAttribute("class", "sombra icon-chulo ocultar");
             spann_t.setAttribute("class", "sombra icon-ex");
         }
-
     } else {
         tituloo.innerText = "Desseleccione la casilla primero";
     }
-
 }
 
 /**
