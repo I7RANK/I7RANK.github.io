@@ -1,15 +1,8 @@
 var num_piezas;
 
-/* Level */
-var piezas_nivel = [
-    "", "", "", "", "fin", "", "", "", "", "rec",
-    "curv", "curv", "", "", "rec", "rec", "curv",
-    "rec", "rec", "curv", "ini", "", "", "", ""
-];
-var estados_win = [
-    0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 1,
-    1, 3, 2, 2, 2, 3, 0, 0, 0, 0
-];
+/* LEVELS */
+var piezas_nivel = levels["lvl_20"][0]
+var estados_win = levels["lvl_20"][1]
 
 var estado_piezas = [0];
 var grados_piezas = [0];
@@ -179,7 +172,6 @@ function rotar(id) {
         }
     }
     if (ganas == np) {
-        document.getElementById("div_tit_juego").style = "top: 10px;";
         for (e = 0; e <= 24; e++) {
             var elimg = document.getElementById(e);
             if (elimg == null) {} else {
@@ -190,6 +182,10 @@ function rotar(id) {
                 elimg.setAttribute("src", new_url);
             }
         }
+
+        // show div_win
+        var div_win = document.getElementById("div_win");
+        div_win.style = "display: flex; animation: show 2s;"
     }
 }
 
@@ -223,6 +219,8 @@ function generar() {
     esta = esta.substring(2);
     console.log(line);
     console.log(esta);
+    console.log(gene_limg);
+    console.log(gene_estados);
 }
 
 /**
@@ -303,16 +301,15 @@ function chosen(id) {
 
 /**
  * borrar - elimina la pieza en caso de que se active la funcion borrar
- * @param {Element} id es el elemento que se quiere borrar
+ * @param {Element} element es el elemento que se quiere borrar
  * @param {boolean} solob si es false se limpian los arrays
- * ver funcion generar
+ * se utiliza en el editor para borrar las piezas
  */
-function borrar(id, solob) {
-    var node = document.getElementById(id.id);
-    node.parentNode.removeChild(node);
+function borrar(element, solob) {
+    element.parentNode.removeChild(element);
     if (solob == false) {
-        gene_limg[id.id] = "";
-        gene_estados[id.id] = 0;
+        gene_limg[element.id] = "";
+        gene_estados[element.id] = 0;
     }
 }
 
@@ -322,11 +319,9 @@ var spann_f = document.getElementById("borrar_f");
 
 /**
  * cambio - esta funcion cambia el estado de borrar piezas y agragar
- * @param {*} equelan 
- * @param {*} id 
+ * @param {*} equelan indica si esta o no eliminando true == delete
  */
-function cambio(equelan, id) {
-
+function cambio(equelan) {
     if (div_contend == "" || div_contendimg == "" || new_idimg == "") {
         if (equelan == true) {
             console.log(equelan);
@@ -342,7 +337,7 @@ function cambio(equelan, id) {
                 div2.setAttribute("onclick", "");
             }
             spann_t.setAttribute("class", "sombra icon-ex ocultar");
-            spann_f.setAttribute("class", "sombra icon-chulo");
+            spann_f.setAttribute("class", "sombra icon-chulo icons_editor");
         } else {
             console.log(equelan);
             titulo.innerText = "";
@@ -358,13 +353,11 @@ function cambio(equelan, id) {
                 }
             }
             spann_f.setAttribute("class", "sombra icon-chulo ocultar");
-            spann_t.setAttribute("class", "sombra icon-ex");
+            spann_t.setAttribute("class", "sombra icon-ex icons_editor");
         }
-
     } else {
         tituloo.innerText = "Desseleccione la casilla primero";
     }
-
 }
 
 /**
@@ -403,9 +396,10 @@ function cargar_dlvls() {
         var lbl_lvls = document.createElement("label");
 
         lbl_lvls.setAttribute("class", "lbl_lvls centrar");
-        div_lvls.setAttribute("id", "div_lvls" + i);
+        div_lvls.setAttribute("id", "div_lvl_" + i);
         div_lvls.setAttribute("class", "div_lvls");
-        div_lvls.setAttribute("onclick", "location.href='juego.html'");
+        /* div_lvls.setAttribute("onclick", "location.href='juego.html'"); */
+        div_lvls.setAttribute("onclick", "load_lvl(this);");
         div_lvls.setAttribute("onmouseover", "divs_hover(this);");
         div_lvls.setAttribute("onmouseout", "divs_out(this);");
 
@@ -476,7 +470,7 @@ function c_line(tipo) {
 /**
  * c_lineout - llama a c_color y cambia el color del texto cuando
  * el mouse se quita de encima (out)
- * @param {*} tipo 
+ * @param {*} tipo is the button if is button play or button editor
  */
 function c_lineout(tipo) {
     if (tipo.id == "btn_j") {
@@ -486,4 +480,50 @@ function c_lineout(tipo) {
         c_color(2, 2);
         document.getElementById("btn_p").style.color = "#1742ff";
     }
+}
+
+/**
+ * load_lvl - loads the level selected in niveles.html
+ * @param {*} lvl is the element selected (level)
+ */
+function load_lvl(lvl) {
+    var name_lvl = lvl.id.substr(4);
+    var num_lvl = parseInt(name_lvl.substr(4));
+
+    num_lvl++;
+
+    piezas_nivel = levels[name_lvl][0]
+    estados_win = levels[name_lvl][1]
+
+    document.getElementById("tit_lvls").textContent = "Level " + num_lvl;
+
+    create_div_juego();
+
+    var div_lvls = document.getElementById("menu_lvls");
+    div_lvls.parentNode.removeChild(div_lvls);
+}
+
+/**
+ * deletes the game board and creates it again
+ */
+function try_again() {
+    var div_juego= document.getElementById("div_juego");
+
+    div_juego.parentNode.removeChild(div_juego);
+
+    var div_win = document.getElementById("div_win");
+    div_win.style = "display: none; animation: none;"
+
+    create_div_juego();
+}
+
+/**
+ * creates the div where will the pieces and adds the pieces
+ */
+function create_div_juego() {
+    var create_div_juego = document.createElement("div");
+    create_div_juego.setAttribute("id", "div_juego");
+    create_div_juego.setAttribute("class", "tablero");
+    document.getElementsByTagName("body")[0].appendChild(create_div_juego);
+    add_piezas(25, false);
 }

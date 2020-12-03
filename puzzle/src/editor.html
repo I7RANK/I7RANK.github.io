@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="icon" type="image/x-icon" href="img/puzzle.ico">
+    <script src="levels.js"></script>
 </head>
 <body onload="add_piezas(25, true);">
     <label id="titulo" class=""></label>
@@ -23,20 +24,20 @@
 
     <div id="conffig">
         <div id="div_save" class="conffig_divs">
-            <span id="guardar" class="sombra icon-cloud-upload" onclick="generar();"></span>
+            <span id="guardar" class="sombra icon-cloud-upload icons_editor" onclick="generar();"></span>
             <label id="lbl_guardar">Guardar</label>
         </div>
         <div id="div_borrar" class="conffig_divs">
-            <span id="borrar_t" class="sombra icon-ex" onclick="cambio(true, this);"></span>
-            <span id="borrar_f" class="sombra icon-chulo ocultar" onclick="cambio(false, this);"></span>
+            <span id="borrar_t" class="sombra icon-ex icons_editor" onclick="cambio(true);"></span>
+            <span id="borrar_f" class="sombra icon-chulo ocultar icons_editor" onclick="cambio(false);"></span>
             <label id="lbl_borrar">Eliminar</label>
         </div>
         <div id="div_recargar" class="conffig_divs">
-            <span id="recargar" class="sombra icon-reload" onclick="recargar();"></span>
+            <span id="recargar" class="sombra icon-reload icons_editor" onclick="recargar();"></span>
             <label id="lbl_recargar">Recargar</label>
         </div>
         <div id="div_home" class="conffig_divs">
-            <span id="recargar" class="sombra icon-home" onclick="location.href='../index.html'"></span>
+            <span id="recargar" class="sombra icon-home icons_editor" onclick="location.href='../index.html'"></span>
             <label id="lbl_home">Inicio</label>
         </div>
     </div>
