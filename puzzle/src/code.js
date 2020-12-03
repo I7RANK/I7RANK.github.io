@@ -466,7 +466,7 @@ function c_line(tipo) {
 /**
  * c_lineout - llama a c_color y cambia el color del texto cuando
  * el mouse se quita de encima (out)
- * @param {*} tipo
+ * @param {*} tipo is the button if is button play or button editor
  */
 function c_lineout(tipo) {
     if (tipo.id == "btn_j") {
@@ -480,9 +480,14 @@ function c_lineout(tipo) {
 
 function load_lvl(lvl) {
     var name_lvl = lvl.id.substr(4);
+    var num_lvl = parseInt(name_lvl.substr(4));
+
+    num_lvl++;
 
     piezas_nivel = levels[name_lvl][0]
     estados_win = levels[name_lvl][1]
+
+    document.getElementById("tit_lvls").textContent = "Level " + num_lvl;
 
     var create_div_juego = document.createElement("div");
     create_div_juego.setAttribute("id", "div_juego");
