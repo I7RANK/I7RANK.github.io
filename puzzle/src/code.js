@@ -211,16 +211,20 @@ for (var i = 0; i <= 24; i++) {
 function generar() {
     var line = "";
     var esta = "";
+    var div_show_output = document.getElementById("save_show_output");
+    var output = "";
+
     for (var i = 0; i <= 24; i++) {
-        line = line + ", " + gene_limg[i];
+        line = line + ", " + '"' + gene_limg[i] + '"';
         esta = esta + ", " + gene_estados[i];
     }
-    line = line.substring(2);
-    esta = esta.substring(2);
+    line = "[" + line.substring(2) + "],\n";
+    esta = "[" + esta.substring(2) + "]";
     console.log(line);
     console.log(esta);
-    console.log(gene_limg);
-    console.log(gene_estados);
+
+    output = "lvl_##:[\n\t" + line + "\t" + esta + "\n],"
+    div_show_output.innerHTML = output;
 }
 
 /**
@@ -492,12 +496,20 @@ function load_lvl(lvl) {
 
     num_lvl++;
 
+    if (!levels[name_lvl])
+    {
+        alert("No existe");
+        return;
+    }
+
     piezas_nivel = levels[name_lvl][0]
     estados_win = levels[name_lvl][1]
 
     document.getElementById("tit_lvls").textContent = "Level " + num_lvl;
 
     create_div_juego();
+
+    document.getElementById("icon_page_reload").style = "display: block;"
 
     var div_lvls = document.getElementById("menu_lvls");
     div_lvls.parentNode.removeChild(div_lvls);
